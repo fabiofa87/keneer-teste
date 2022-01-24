@@ -16,4 +16,18 @@ export class UserDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    async getUserByEmail(email: string) {
+        try{
+            const result: any = await this.connection('keneer_users')
+            .select('*')
+            .where({email})
+
+            const user = toUserModel(result[0]);
+
+            return user;
+        }
+        catch(error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

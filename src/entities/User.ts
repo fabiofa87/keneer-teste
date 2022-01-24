@@ -4,6 +4,12 @@ export interface SignupInputDTO {
     password: string
 }
     
+
+export interface LoginInputDTO {
+    email: string,
+    password: string
+}
+
 export type User = {
         id: string,
         name: string,
