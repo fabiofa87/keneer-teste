@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import cors from 'cors'
 import {AddressInfo} from 'net'
 import { userRouter } from "./endpoints/userRouter";
+import { productsRouter } from "./endpoints/productsRouter";
 
 
 const app: Express = express();
@@ -10,6 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use("/user", userRouter)
+app.use('/products', productsRouter)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {

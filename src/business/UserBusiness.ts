@@ -64,7 +64,7 @@ export class UserBusiness {
             return token;
         }
         catch(error: any) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new Error(error.sqlMessage || error.message)
         }
     }
 }

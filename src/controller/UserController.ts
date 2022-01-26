@@ -38,8 +38,9 @@ export class UserController {
             res.status(200).send({message, token});
         }
         catch(error: any) {
+            let message = error.sqlMessage || error.message
             res.statusCode = 400;
-            throw new Error(error.sqlMessage || error.message);
+            res.send({ message })
         }
     }
 }
