@@ -12,7 +12,8 @@ export class ProductsController {
             const input: ProductsInputDTO = {
                 product_name: req.body.product_name,
                 photo: req.body.photo,
-                token
+                token,
+                product_status: req.body.product_status
             }
 
             await new ProductBusiness().addNewProduct(input);

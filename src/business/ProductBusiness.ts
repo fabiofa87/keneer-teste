@@ -1,5 +1,5 @@
 import { ProductsDatabase } from "../data/ProductsDatabase";
-import { Products, ProductsInputDTO } from "../entities/Products";
+import { Products, ProductsInputDTO, PRODUCT_STATUS } from "../entities/Products";
 import { AuthenticationData, Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 
@@ -18,7 +18,8 @@ export class ProductBusiness {
                 id,
                 product_name: input.product_name,
                 photo: input.photo,
-                added_by: tokenData.id
+                added_by: tokenData.id,
+                product_status: input.product_status || PRODUCT_STATUS.ATIVO
             }
 
             await new ProductsDatabase().addNewProduct(product);

@@ -10,6 +10,7 @@ export class ProductsDatabase extends BaseDatabase {
                 product_name: product.product_name,
                 photo: product.photo,
                 added_by: product.added_by,
+                product_status: product.product_status
             })
         }
         catch(error: any) {
@@ -22,6 +23,8 @@ export class ProductsDatabase extends BaseDatabase {
             const result = await this.connection('keneer_products')
             .select('*')
             .from('keneer_products')
+            .where({product_status: 'ativo'})
+            // .orWhere({product_status: 'deletado'})
             return result;
 
         }
@@ -42,7 +45,7 @@ export class ProductsDatabase extends BaseDatabase {
         try {
             await this.connection('keneer_products')
             .where({id})
-            .delete()
+            .update({product_status: 'deletado'})
         }
         catch(error: any) {
             throw new Error(error.sqlMessage || error.message);
