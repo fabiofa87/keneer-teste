@@ -10,8 +10,3 @@ export interface ProductsInputDTO {
     photo: string,
     token: string,
 }
-
-export interface getAllPostsOutputDTO {
-    product_name: string,
-    photo: string,
-}

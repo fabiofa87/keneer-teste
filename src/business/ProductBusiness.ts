@@ -29,7 +29,8 @@ export class ProductBusiness {
     }
     async getAllProducts() {
         try {
-            const products: Products = await new ProductsDatabase().getAllProducts();
+            const userData = new ProductsDatabase();
+            const products = await userData.getAllProducts();
 
             return products;
         }

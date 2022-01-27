@@ -1,6 +1,5 @@
 import { Products } from "../entities/Products";
 import { BaseDatabase } from "./BaseDatabase";
-import { Request, Response } from "express";
 
 export class ProductsDatabase extends BaseDatabase { 
     async addNewProduct(product: Products) {
@@ -18,18 +17,13 @@ export class ProductsDatabase extends BaseDatabase {
         }
     }
 
-    async getAllProducts(req: Request, res: Response){
-
-            const query = req.query.query || '%'
-            const sort = req.query.sort || 'price' ? 'price' : 'name'
-            const order = req.query.order || 'asc' ? 'asc' : 'desc'
+    async getAllProducts(){
             
-            await this.connection('keneer_products')
+            const result = await this.connection('keneer_products')
             .select('*')
-            .from('labecommerce_products')
-            .where('price', 'like', `%${query}%`)
-            .orWhere('name', 'like', `%${query}%`)
-            .orderBy(sort, order)
+            .from('keneer_products')
+            return result;
+
         }
         catch(error: any) {
             throw new Error(error.sqlMessage || error.message);
