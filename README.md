@@ -1,4 +1,4 @@
-# Este foi uma API desenvolvida para um teste em uma empresa chamada Keneer.io.
+# Este foi uma API desenvolvida para um teste em uma empresa chamada Keneer.
 ## A ideia por tras dessa API era desenvolver um CRUD manipulando dados por meio de um banco de dados SQL e utilizei o #MySQL
 
 ## Para utilizar a API o end: https://keneer-produtos.herokuapp.com/
