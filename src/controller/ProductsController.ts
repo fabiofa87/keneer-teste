@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { ProductBusiness } from '../business/ProductBusiness';
-import { ProductsInputDTO } from '../entities/Products';
+import { getAllPostsOutputDTO, Products, ProductsInputDTO } from '../entities/Products';
 
 export class ProductsController {
     addNewProduct = async (req: Request, res: Response) => {
@@ -21,6 +21,25 @@ export class ProductsController {
                 message
             })
         
+        }
+        catch(error: any) {
+            let message = error.sqlMessage || error.message;
+            res.statusCode = 400;
+            res.send({ message})
+        }
+    }
+    getAllProducts = async(req: Request, res: Response) => {
+        try {
+            let message = "Products retrieved successfully.";
+
+            const products: Products = await new ProductBusiness().getAllProducts();
+
+            const output: getAllPostsOutputDTO = {
+                product_name: products.product_name,
+                photo: products.photo
+            }
+
+            res.status(200).send({message, output})
         }
         catch(error: any) {
             let message = error.sqlMessage || error.message;

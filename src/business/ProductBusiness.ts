@@ -27,4 +27,14 @@ export class ProductBusiness {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    async getAllProducts() {
+        try {
+            const products: Products = await new ProductsDatabase().getAllProducts();
+
+            return products;
+        }
+        catch(error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

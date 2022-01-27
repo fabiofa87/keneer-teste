@@ -4,4 +4,5 @@ import {ProductsController} from '../controller/ProductsController';
 export const productsRouter = express.Router();
 const productsController = new ProductsController();
 
-productsRouter.post('/', productsController.addNewProduct);
+productsRouter.post('/add', productsController.addNewProduct);
+productsRouter.get('/all', productsController.getAllProducts);
