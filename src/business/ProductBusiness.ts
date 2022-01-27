@@ -50,4 +50,13 @@ export class ProductBusiness {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    async deleteProduct(id: string) {
+        try {
+            const userData = new ProductsDatabase();
+            await userData.deleteProduct(id);
+        }
+        catch(error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

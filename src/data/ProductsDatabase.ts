@@ -38,4 +38,14 @@ export class ProductsDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    async deleteProduct(id: string){
+        try {
+            await this.connection('keneer_products')
+            .where({id})
+            .delete()
+        }
+        catch(error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
     }

@@ -69,4 +69,22 @@ export class ProductsController {
             res.send({ message})
         }
     }
+    deleteProduct = async(req: Request, res: Response) => {
+        try {
+            let message = "Product deleted successfully.";
+
+            const input: getProductsByIdInputDTO = {
+                id: req.params.id
+            }
+
+            await new ProductBusiness().deleteProduct(input.id);
+
+            res.status(200).send({message})
+        }
+        catch(error: any) {
+            let message = error.sqlMessage || error.message;
+            res.statusCode = 400;
+            res.send({ message})
+        }
+    }
 }

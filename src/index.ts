@@ -14,6 +14,7 @@ app.use("/user", userRouter)
 app.use('/products', productsRouter)
 app.use('/products', productsRouter)
 app.use('/products', productsRouter)
+app.use('/products', productsRouter)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
