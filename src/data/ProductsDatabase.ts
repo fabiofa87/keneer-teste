@@ -1,4 +1,4 @@
-import { Products } from "../entities/Products";
+import { Products, toProductsModel } from "../entities/Products";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ProductsDatabase extends BaseDatabase { 
@@ -25,7 +25,17 @@ export class ProductsDatabase extends BaseDatabase {
             return result;
 
         }
+
+    async getProductsById(id: string){
+        try {
+            const result: any = await this.connection('keneer_products')
+            .select('*')
+            .where({id})
+
+            return toProductsModel(result[0])
+        }
         catch(error: any) {
             throw new Error(error.sqlMessage || error.message);
         }
+    }
     }

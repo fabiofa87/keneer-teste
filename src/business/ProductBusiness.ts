@@ -38,4 +38,16 @@ export class ProductBusiness {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    async getProductsById(id: string) {
+        try {
+            const products: Products = await new ProductsDatabase().getProductsById(id);
+
+            if(!products) throw new Error("Product not found")
+
+            return products;
+        }
+        catch(error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }
